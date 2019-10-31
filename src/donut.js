@@ -4,10 +4,10 @@ var _getCallbackId = function () {
 }
 
 
-var _sendTpRequest = function (methodName, params, callback) {
+var _sendTpRequest = function (methodName, params, callbackId) {
     // if Android
     if (window.JsNativeBridge) {
-        window.JsNativeBridge.callMessage(methodName, params, callback);
+        window.JsNativeBridge.callHandler(methodName, params, callbackId);
     }
 
     // if iOS
@@ -15,7 +15,7 @@ var _sendTpRequest = function (methodName, params, callback) {
         window.webkit.messageHandlers[methodName].postMessage({
             body: {
                 'params': params,
-                'callback': callback
+                'callback': callbackId
             }
         });
     }
@@ -50,12 +50,9 @@ var donut = {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
-                    if (res.device_id) {
-                        res.data = res.device_id;
-                    }
                     resolve(res);
                 } catch (e) {
-                    reject(e);
+                    resolve(result);
                 }
             }
 
@@ -72,13 +69,6 @@ var donut = {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
-
-                    if (res.data && res.data.length) {
-                        for (var i = 0; i < res.data.length; i++) {
-                            res.data[i].blockchain = BLOCKCHAIN_ID_MAP[res.data[i].blockchain_id + ''] || res.data[i].blockchain_id;
-                        }
-                    }
-
                     resolve(res);
                 } catch (e) {
                     reject(e);
@@ -97,14 +87,6 @@ var donut = {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
-                    if (res.rawTransaction) {
-                        res.data = res.rawTransaction;
-                    }
-
-                    if (res.data && res.data.blockchain_id) {
-                        res.data.blockchain = BLOCKCHAIN_ID_MAP[res.data.blockchain_id + ''] || res.data.blockchain_id;
-                    }
-
                     resolve(res);
                 } catch (e) {
                     reject(e);
@@ -131,6 +113,24 @@ var donut = {
             _sendTpRequest('sign', JSON.stringify(params), callbackId);
         });
     },
+    transfer: function (params) {
+
+        return new Promise(function (resolve, reject) {
+            var callbackId = _getCallbackId();
+
+            window[callbackId] = function (result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig, "");
+                try {
+                    var res = JSON.parse(result);
+                    resolve(res);
+                } catch (e) {
+                    reject(e);
+                }
+            }
+
+            _sendTpRequest('transfer', JSON.stringify(params), callbackId);
+        });
+    },
     invokeQRScanner: function () {
         return new Promise(function (resolve, reject) {
             var callbackId = _getCallbackId();
@@ -139,10 +139,9 @@ var donut = {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
-                    var data = res.qrResult || '';
-                    resolve(data);
+                    resolve(res);
                 } catch (e) {
-                    reject(e);
+                    resolve(result);
                 }
             }
 
