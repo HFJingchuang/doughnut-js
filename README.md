@@ -328,7 +328,5 @@ donut.fullScreen(params)
 ##### Example
 
 ```javascript
-donut.fullScreen({
-    fullScreen: 0
-})
+donut.fullScreen(1)
 ```
