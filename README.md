@@ -322,7 +322,7 @@ donut.fullScreen(params)
 ##### Parameters
 
 `params`:
-- `String`: `String` 1 - fullScreen,  0 - cancel
+`String` 1 - fullScreen,  0 - cancel
 
 
 ##### Example
