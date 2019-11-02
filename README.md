@@ -94,9 +94,6 @@ donut.getAppInfo().then(console.log)
 
 #### <a name='donut.getDeviceId'></a>1.3 donut.getDeviceId
 
-
-#### <a name='donut.getDeviceId'></a>1.3 donut.getDeviceId
-
 ```javascript
 donut.getDeviceId()
 ```
@@ -116,8 +113,6 @@ donut.getDeviceId().then(console.log)
 #### <a name='donut.getCurrentWallet'></a>1.4 donut.getCurrentWallet
 
 获取用户当前钱包信息
-
-Get user's current wallet info
 
 ```javascript
 donut.getCurrentWallet()
