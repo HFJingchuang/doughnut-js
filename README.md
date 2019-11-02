@@ -29,19 +29,18 @@ Browser
 ## <a name='Contents'></a>Contents
 
 <!-- vscode-markdown-toc -->
-* [Contents](#Contents)
-	* [1. API](#API)
+* [1. API](#API)
     * [1.1 donut.isConnected](#donut.isConnected)
-		* [1.2 donut.getAppInfo](#donut.getAppInfo)
-		* [1.3 donut.getDeviceId](#donut.getDeviceId)
+    * [1.2 donut.getAppInfo](#donut.getAppInfo)
+    * [1.3 donut.getDeviceId](#donut.getDeviceId)
     * [1.4 donut.getCurrentWallet](#donut.getCurrentWallet)
-		* [1.5 donut.getWallets](#donut.getWallets)
+    * [1.5 donut.getWallets](#donut.getWallets)
     * [1.6 donut.sign](#donut.sign)
     * [1.7 donut.transfer](#donut.transfer)
-		* [1.8 donut.invokeQRScanner](#donut.invokeQRScanner)
-		* [1.9 donut.back](#donut.back)
-		* [1.10 donut.close](#donut.close)
-		* [1.11 donut.fullScreen](#donut.fullScreen)
+    * [1.8 donut.invokeQRScanner](#donut.invokeQRScanner)
+    * [1.9 donut.back](#donut.back)
+    * [1.10 donut.close](#donut.close)
+    * [1.11 donut.fullScreen](#donut.fullScreen)
     
 <!-- vscode-markdown-toc-config
 	numbering=false
@@ -79,7 +78,7 @@ donut.getAppInfo()
 ##### Example
 
 ```javascript
-tp.getAppInfo().then(console.log)
+donut.getAppInfo().then(console.log)
 
 > {
     result: true,
@@ -301,7 +300,7 @@ donut.back()
 ##### Example
 
 ```javascript
-tp.back()
+donut.back()
 
 ```
 
