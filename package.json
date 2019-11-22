@@ -1,6 +1,6 @@
 {
   "name": "doughnut-js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Doughnut API for DAPP.",
   "main": "index.js",
   "scripts": {
