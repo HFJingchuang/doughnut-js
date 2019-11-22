@@ -41,6 +41,7 @@ Browser
     * [1.9 donut.back](#donut.back)
     * [1.10 donut.close](#donut.close)
     * [1.11 donut.fullScreen](#donut.fullScreen)
+    * [1.12 donut.shareToSNS](#donut.shareToSNS)
     
 <!-- vscode-markdown-toc-config
 	numbering=false
@@ -329,4 +330,31 @@ donut.fullScreen(params)
 
 ```javascript
 donut.fullScreen(1)
+```
+
+
+#### <a name='donut.shareToSNS'></a>1.12 donut.shareToSNS
+
+```javascript
+donut.shareToSNS(params)
+```
+
+##### Parameters
+
+`params`- `Object`: tx object
+- `title`: `String`
+- `url`: `Float` 
+- `text`: `String|Object`
+- `imgUrl`: `String|Object`
+
+##### Example
+
+```javascript
+var params = {
+	"title": "js分享",
+	"url": "https://github.com/HFJingchuang/doughnut-js",
+	"text": "js分享测试",
+	"imgUrl": "http://www.someserver.com/测试图片网络地址.jpg"
+}
+donut.shareToSNS(params)
 ```
