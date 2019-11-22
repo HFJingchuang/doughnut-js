@@ -157,7 +157,25 @@ var donut = {
     },
     close: function () {
         _sendTpRequest('close', '', '');
-    }
+    },
+    shareToSNS: function (params) {
+        return new Promise(function (resolve, reject) {
+            var callbackId = _getCallbackId();
+
+            window[callbackId] = function (result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig, "");
+                try {
+                    var res = JSON.parse(result);
+                    resolve(res);
+                } catch (e) {
+                    resolve(result);
+                }
+            }
+
+            _sendTpRequest('shareToSNS', JSON.stringify(params), callbackId);
+
+        });
+    },
 };
 
 
