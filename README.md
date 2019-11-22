@@ -341,7 +341,7 @@ donut.shareToSNS(params)
 
 ##### Parameters
 
-`params`- `Object`: tx object
+`params`- `Object`: object
 - `title`: `String`
 - `url`: `Float` 
 - `text`: `String|Object`
