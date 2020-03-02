@@ -3,6 +3,10 @@ Doughnut API for DAPP.
 
 ## Javascript SDK for Doughnut Dapp.
 
+#### 测试地址，仅在钱包内可用
+
+https://zcold.top
+
 ## <a name='Installation'></a>Installation
 
 ```bash
